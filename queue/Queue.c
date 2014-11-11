@@ -22,7 +22,7 @@ int IsFull(Queue Q)
 }
 Queue CreateQueue(int MaxElements)
 {
-	Queue Q;
+	Queue Q = (Queue)malloc(sizeof(Queue));
 	Q->Array = (ElementType*)malloc(sizeof(ElementType)*MaxElements);
 	Q->Capacity = MaxElements;
 	return Q;
@@ -93,5 +93,6 @@ int main()
     {
     	printf("%d\n",FrontAndDequeue(Q));
     }
+    free(Q);
 	return 0;
 }
