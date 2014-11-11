@@ -85,7 +85,4 @@ void Pop(Stack S)
 		free(FirstCell);
 	}
 }
-int main()
-{
-	return 0;
-}
+
