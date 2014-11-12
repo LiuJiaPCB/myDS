@@ -128,11 +128,31 @@ SearchTree Delete(ElementType X,SearchTree T)
 	
 	return T;
 }
+
+void PrintTree(SearchTree T)
+{
+	if(T!=NULL)
+	{
+		PrintTree(T->Left);
+		/*此处添加对数据的操作，比如打印等。。。*/ 
+		PrintTree(T->Right);
+	}
+}
+
+int Height(SearchTree T) 
+{
+	if(T==NULL)
+	{
+		exit(-1);
+	}
+	else
+	{
+		return 1+Max(Height(T->Left),Height(T->Right));
+	}
+}
+
 ElementType Retrieve(Position P)
 {
 	
 }
-int main()
-{
-	return 0;
-}
+
