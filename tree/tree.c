@@ -150,6 +150,25 @@ int Height(SearchTree T)
 		return 1+Max(Height(T->Left),Height(T->Right));
 	}
 }
+/*返回-1说明不平衡，否则平衡*/ 
+int IsBalance(SearchTree T)
+{
+	int LeftHeight,RightHeight;
+	if(T==NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		LeftHeight = IsBalance(T->Left);
+		RightHeight = IsBalance(T->Right);
+		if(LeftHeight>=0&&RightHeight>=0&&((LeftHeight-RightHeight)<=1)||((LeftHeight-RightHeight)>=-1))
+		{
+			return LeftHeight>RightHeight?(LeftHeight+1):(RightHeight+1);
+		}
+		return -1;
+	}
+}
 
 ElementType Retrieve(Position P)
 {
