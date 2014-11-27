@@ -52,7 +52,7 @@ Position FindPrevious(ElementType X,List L)
 	return P;
 }
 
-void DeleteList(ElementType X,List L)
+void Delete(ElementType X,List L)
 {
 	Position P,TmpCell;
 	P = FindPrevious(X,L);
@@ -91,6 +91,35 @@ void DeleteList(List L)
 		Tmp = P->Next;
 		free(P);
 		P = Tmp;
+	}
+}
+
+Position Header(List L)
+{
+	return L; 
+} 
+
+Position First(List L)
+{
+	if(L->Next!=NULL)
+	{
+		return L->Next;
+	}
+}
+
+Position Advance(Position P)
+{
+	if(P->Next!=NULL)
+	{
+		return P->Next;
+	}
+}
+
+ElementType Retrieve(Position P)
+{
+	if(P!=NULL)
+	{
+		return P->Element;
 	}
 }
 
