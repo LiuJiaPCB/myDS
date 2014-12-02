@@ -26,6 +26,12 @@ Stack CreateStack(void)
 	return S;
 }
 
+void DisposeStack(Stack S)
+{
+	MakeSEmpty(S);
+	free(S); 
+} 
+
 void MakeSEmpty(Stack S)
 {
 	if(S == NULL)
