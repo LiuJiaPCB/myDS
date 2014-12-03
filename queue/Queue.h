@@ -1,6 +1,7 @@
 #ifndef _Queue_h
 #define _Queue_h
 
+#define MinQueueSize 5
 struct QueueRecord;
 typedef struct QueueRecord *Queue;
 typedef int ElementType;
@@ -17,7 +18,7 @@ ElementType FrontAndDequeue(Queue Q);
 
 #endif
 
-#define MinQueueSize 5
+
  
 
  

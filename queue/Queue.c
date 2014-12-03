@@ -29,6 +29,8 @@ Queue CreateQueue(int MaxElements)
 }
 void DisposeQueue(Queue Q)
 {
+	free(Q->Array);
+	free(Q); 
 	
 }
 void MakeQEmpty(Queue Q)
