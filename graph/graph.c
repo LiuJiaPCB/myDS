@@ -90,3 +90,36 @@ void CreateALGraph(GraphAdjList *G)
 	}
 }
 
+/*邻接矩阵的深度优先遍历*/
+typedef int Boolean;
+Boolean visited[MAX];
+
+void DFS(MGraph G,int i)
+{
+	int j;
+	visited[i] = TRUE;
+	printf("%c ".G.vexs[i]);
+	for(j=0;j<G.numVertexes;j++)
+	{
+		if(G.arc[i][j]==1&&!visited[j])
+		{
+			DFS(G,j);
+		}
+	}
+} 
+
+void DFSTraverse(MGraph G)
+{
+	int i;
+	for(i=0;i<G.numVertexes;i++)
+	{
+		visited[i] = TRUE;
+	}
+	for(i=0;i<G.numVertexes;i++)
+	{
+		if(!visited[i])
+		{
+			DFS(G,i);
+		}
+	}
+}
