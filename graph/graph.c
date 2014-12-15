@@ -123,3 +123,146 @@ void DFSTraverse(MGraph G)
 		}
 	}
 }
+
+/*邻接表的深度优先遍历*/
+void DFS(MGraph GL,int i)
+{
+	EdgeNode *p;
+	
+	visited[i] = TRUE;
+	printf("%c ",GL->adjList[i].data);
+	p=GL->adjList[i].firstedge;
+	while(p)
+	{
+		if(!visited[p->adjvex])
+		{
+			DFS(GL,p->adjvex);
+		}
+		p=p->next;
+	}
+} 
+
+void DFSTraverse(MGraph GL)
+{
+	int i;
+	for(i=0;i<GL->numVertexes;++i)
+	{
+		visited[i] = FALSE;
+	}
+	for(i=0;i<GL.numVertexes;i++)
+	{
+		if(!visited[i])
+		{
+			DGF(GL,i);
+		}
+	}
+}
+/*邻接矩阵的广度遍历算法*/ 
+void BFSTraverse(MGaph G)
+{
+	for(i=0;i<G->numVertexes;i++)
+	{
+		visited[i] = FALSE;
+	}
+	InitQueue(&Q);
+	for(i=0;i<G->numVertexes;i++)
+	{
+		if(!visited[i])
+		{
+			visited[i]=TRUE;
+			printf("%c ",G.vexs[i]);
+			EnQueue(&Q,i);
+			while(!QueueEmpty(Q))
+			{
+				DeQueue(&Q,&i);
+				for(j=0;j<G.numVertexes;j++)
+				{
+					if(G.arc[i][j]==1&&!visited[j])
+					{
+						visited[j]=TRUE;
+						printf("%c ",G.vexs[j]);
+						EnQueue(&Q,j);
+					}
+				}
+			}
+		}
+	}
+}
+
+/*邻接表的广度遍历算法*/ 
+void BFSTraverse(GraphAdjList GL)
+{
+	int i;
+	EdgeNode *p;
+	Queue Q;
+	for(i=0;i<GL->numVertexes;i++)
+	{
+		visited[i] = FALSE;
+	}
+	InitQueue(&Q);
+	for(i=0;i<G->numVertexes;i++)
+	{
+		if(!visited[i])
+		{
+			visited[i]=TRUE;
+			printf("%c ",GL->adjList[i].data);
+			EnQueue(&Q,i);
+			while(!QueueEmpty(Q))
+			{
+				DeQueue(&Q,&i);
+				p = GL->adjList[i].firstedge;
+				while(p)
+				{
+					if(!visited[p->adjvex])
+					{
+						visited[p->adjvex]=TRUE;
+						printf("%c ",GL->adjList[p->adjvex].data);
+						EnQueue(&Q,p->adjvex);
+					}
+					p=p->next;
+				}
+			}
+		}
+	}
+}
+/*最小生成树
+  1.Prim算法(未优化)*/ 
+void MiniSpanTree_Prim(MGraph G)
+{
+	int i,j,k,min;
+	int adjvex[MAXVEX];
+	int lowcost[MAXVEX];
+	lowcost[0] = 0;
+	adjvex[0]=0;
+	for(i=1;i<G.numVerteses;i++)
+	{
+		lowcost[i] = G.arc[0][i];
+		adjvex[i] = 0;
+	}
+	for(i=0;i<G.numVertexes;i++)
+	{
+		min = INFINITY;
+		while(j<G.numVertexes)
+		{
+			if(lowcost[j]!=0&&lowcost[j]<min)
+			{
+				min = lowcost[j];
+				 k = j;
+			}
+			j++;
+		} 
+		printf("(%d,%d)",adjvex[k],k);
+		lowcost[k]=0;
+		for(j=1;j<G.numVertexes;j++)
+		{
+			if(lowcost[j]!=0&&G.arc[k][j]<lowcost[j])
+			{
+				lowcost[j] = G.arc[k][j];
+				adjvex[j] = k;
+			}
+		}
+	}
+}
+
+
+
